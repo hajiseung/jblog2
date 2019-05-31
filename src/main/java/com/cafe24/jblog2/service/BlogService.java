@@ -124,7 +124,9 @@ public class BlogService {
 
 	public boolean deleteCategory(CategoryVo categoryVo) {
 		boolean result = categoryDao.deleteCategory(categoryVo);
-		return postDao.deletePost(categoryVo) == result;
+		int result2 = postDao.deletePost(categoryVo);
+		System.out.println(result2);
+		return false;
 	}
 
 	public CategoryVo getCategoryNo(ModelMap modelMap) {

@@ -29,8 +29,8 @@ public class PostDao {
 		return sqlSession.selectOne("post.getOne", modelMap);
 	}
 
-	public boolean deletePost(CategoryVo categoryVo) {
-		return sqlSession.delete("post.deleteCategory", categoryVo) == 1;
+	public int deletePost(CategoryVo categoryVo) {
+		return sqlSession.delete("post.deleteCategory", categoryVo);
 	}
 
 	public void insertdefaultPost(CategoryVo getCategoryNo) {
