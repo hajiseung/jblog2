@@ -74,6 +74,7 @@ public class BlogController {
 	public String blogAdminCategory(@PathVariable Optional<String> blogid, ModelMap modelMap) {
 		modelMap.put("blogid", blogid.get());
 		List<CategoryVo> resultCategoryVo = blogService.getCategoryList(modelMap);
+		System.out.println(resultCategoryVo);
 		modelMap.addAttribute("resultCategoryVo", resultCategoryVo);
 
 		BlogVo getTitle = new BlogVo();
@@ -134,12 +135,7 @@ public class BlogController {
 	@ResponseBody
 	@PostMapping("/delete/category")
 	public JSONResult deleteCategory(@ModelAttribute CategoryVo categoryVo) {
-
-		System.out.println("Ajax 접근");
-		System.out.println(categoryVo);
 		boolean data = blogService.deleteCategory(categoryVo);
-		System.out.println(data);
-
 		return JSONResult.success(data);
 	}
 }

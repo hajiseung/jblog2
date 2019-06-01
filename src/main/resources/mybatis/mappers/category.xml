@@ -6,9 +6,21 @@
 	<select id="getList" parameterType="blogvo"
 		resultType="categoryvo">
 		<![CDATA[
-			select  a.c_no, a.c_name, a.c_desc, date_format(a.c_regdate,'%Y-%m-%d') as c_regdate
-			from category a, post b, ( select  a.c_no from category a, post b where a.blogid = #{blogid} and a.c_no=b.c_no group by a.c_no )c
-			where blogid= #{blogid}  group by c_no
+			select c.p_count, a.c_no, a.c_name, a.c_desc, date_format(a.c_regdate,'%Y-%m-%d') as c_regdate 
+			from category a, post b, ( select count(*) p_count, a.c_no from category a, post b where a.blogid = #{blogid} and a.c_no=b.c_no group by a.c_no ) c 
+			where blogid=#{blogid} and a.c_no = b.c_no and c.c_no=b.c_no group by c.c_no
+		]]>
+	</select>
+	<!-- select a.c_no, a.c_name, a.c_desc, date_format(a.c_regdate,'%Y-%m-%d') 
+		as c_regdate from category a, post b, ( select a.c_no from category a, post 
+		b where a.blogid = #{blogid} and a.c_no=b.c_no group by a.c_no )c where blogid= 
+		#{blogid} group by c_no -->
+
+	<select id="getPostCount">
+		<![CDATA[
+			select count(*) p_count 
+			from category a, post b 
+			where a.c_no=b.c_no and a.blogid='hajiseung' and b.c_no=6
 		]]>
 	</select>
 	<!-- select c.p_count, a.c_no, a.c_name, a.c_desc, date_format(a.c_regdate,'%Y-%m-%d') 

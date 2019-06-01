@@ -123,12 +123,8 @@ public class BlogService {
 	}
 
 	public boolean deleteCategory(CategoryVo categoryVo) {
-		System.out.println("에러0");
 		int result2 = postDao.deletePost(categoryVo);
-		System.out.println("에러1");
 		boolean result = categoryDao.deleteCategory(categoryVo);
-		System.out.println("에러2");
-		System.out.println(result2);
 		return false;
 	}
 
