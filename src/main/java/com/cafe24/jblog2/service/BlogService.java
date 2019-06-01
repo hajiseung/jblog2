@@ -17,11 +17,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cafe24.jblog2.dao.BlogDao;
 import com.cafe24.jblog2.dao.CategoryDao;
 import com.cafe24.jblog2.dao.PostDao;
+import com.cafe24.jblog2.dao.UserDao;
 import com.cafe24.jblog2.vo.BlogVo;
 import com.cafe24.jblog2.vo.CategoryVo;
+import com.cafe24.jblog2.vo.UserVo;
 
 @Service
 public class BlogService {
+	@Autowired
+	private UserDao userDao;
 	@Autowired
 	private BlogDao blogDao;
 
@@ -134,6 +138,10 @@ public class BlogService {
 
 	public void insertdefaultPost(CategoryVo getCategoryNo) {
 		postDao.insertdefaultPost(getCategoryNo);
+	}
+
+	public UserVo checkUser(Optional<String> blogid) {
+		return userDao.checkId(blogid.get());
 	}
 
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cafe24.jblog2.dto.JSONResult;
@@ -22,6 +21,7 @@ import com.cafe24.jblog2.service.BlogService;
 import com.cafe24.jblog2.vo.BlogVo;
 import com.cafe24.jblog2.vo.CategoryVo;
 import com.cafe24.jblog2.vo.PostVo;
+import com.cafe24.jblog2.vo.UserVo;
 
 @Controller
 @RequestMapping("/{blogid:^(?!assets|images|user).*}")
@@ -34,6 +34,11 @@ public class BlogController {
 	public String userBlog(@PathVariable Optional<String> blogid, @PathVariable Optional<Integer> pathVariable,
 			@PathVariable Optional<Integer> pathVariable1, @PathVariable Optional<Integer> pathVariable2,
 			ModelMap modelMap, BlogVo blogVo) {
+		//사용자 있나 없나 체크
+		UserVo usercheck = blogService.checkUser(blogid);
+		if(usercheck==null) {
+			return "/main/error";
+		}
 		modelMap.put("pathVariable", pathVariable);
 		modelMap.put("pathVariable1", pathVariable1);
 		modelMap.put("pathVariable2", pathVariable2);

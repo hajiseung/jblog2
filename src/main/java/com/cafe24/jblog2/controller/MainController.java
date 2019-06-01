@@ -10,4 +10,8 @@ public class MainController {
 	public String main() {
 		return "main/index";
 	}
+	@RequestMapping( "/main/error" )
+	public String emptyUser() {
+		return "/main/error";
+	}
 }
