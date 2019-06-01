@@ -70,8 +70,6 @@ $(document).ready(function(){
 	$('.deleteCategory').click(function(){
 		
 		var no = $(this).attr('id');
-		console.log(no);
-		
 		var click = confirm("카테고리 내부의 포스트도 전부 삭제됩니다");
 		var sessionV = '${authUser.userid}';
 		if(click==true){
@@ -86,6 +84,12 @@ $(document).ready(function(){
 				,
 				success:function(data){
 					console.log(data);
+					if(data.result=="success"){
+						window.location.href='${pageContext.request.contextPath}/'+sessionV+'/admin/category';
+					}
+				},
+				error:function(xhr,error){
+					console.error('Error!!!:'+error);
 				}
 			})
 		}

@@ -8,14 +8,6 @@ public class CategoryVo {
 	private int p_count;
 	private String userid;
 
-	public String getUserid() {
-		return userid;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
 	public int getC_no() {
 		return c_no;
 	}
@@ -30,6 +22,14 @@ public class CategoryVo {
 
 	public String getC_regdate() {
 		return c_regdate;
+	}
+
+	public int getP_count() {
+		return p_count;
+	}
+
+	public String getUserid() {
+		return userid;
 	}
 
 	public void setC_no(int c_no) {
@@ -48,12 +48,12 @@ public class CategoryVo {
 		this.c_regdate = c_regdate;
 	}
 
-	public int getP_count() {
-		return p_count;
-	}
-
 	public void setP_count(int p_count) {
 		this.p_count = p_count;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
 	@Override

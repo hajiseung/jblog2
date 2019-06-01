@@ -29,7 +29,7 @@
 	</insert>
 	<delete id="deleteCategory" parameterType="categoryvo">
 		<![CDATA[
-			delete from category where c_no=#{c_no} and blogid=#{blogid}
+			delete from category where c_no=#{c_no} and blogid=#{userid}
 		]]>
 	</delete>
 	<select id="getCategoryNo" parameterType="map"
